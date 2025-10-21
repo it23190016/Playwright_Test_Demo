@@ -79,8 +79,9 @@ jobs:
         
     - name: Deploy to GitHub Pages
       if: always()
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: tests/allure-report
         destination_dir: allure-report
+        force_orphan: true
