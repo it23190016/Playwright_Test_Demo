@@ -8,7 +8,9 @@
     "test:demo:run": "playwright test tests/demo.spec.ts --headed --reporter=allure-playwright",
     "report": "allure generate allure-results --clean; allure open",
     "report:generate": "allure generate allure-results --clean",
-    "allure:serve": "allure serve allure-results"
+    "allure:serve": "allure serve allure-results",
+    "test:ci": "playwright test --reporter=allure-playwright",
+    "allure:generate": "allure generate allure-results --clean -o allure-report"
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0",
