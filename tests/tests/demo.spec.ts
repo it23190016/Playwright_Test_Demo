@@ -147,6 +147,23 @@ test.describe.serial('🧃 Juice Bar E-commerce - Interactive Demo Scenarios', (
     });
   });
 
-  
+  test('❌ Invalid Login Attempt', async ({ page }) => {
+    await page.goto('/');
+    await page.fill('input[type="email"]', 'wrong@email.com');
+    await page.fill('input[type="password"]', 'wrongpassword');
+    await page.click('button[type="submit"]');
+    
+    await page.waitForTimeout(2000);
+    
+    await test.step('Invalid Login Error Notification', async () => {
+      const screenshot = await page.screenshot({ fullPage: true });
+      await test.info().attach('Invalid Login Error with Notification', {
+        body: screenshot,
+        contentType: 'image/png'
+      });
+    });
+    
+    await expect(page).toHaveURL('/');
+  });
 
 });
