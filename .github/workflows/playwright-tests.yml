@@ -6,10 +6,7 @@ on:
   pull_request:
     branches: [ main ]
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+
 
 jobs:
   test:
@@ -77,11 +74,3 @@ jobs:
         path: tests/allure-report/
         retention-days: 30
         
-    - name: Deploy to GitHub Pages
-      if: always()
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: tests/allure-report
-        destination_dir: allure-report
-        force_orphan: true
