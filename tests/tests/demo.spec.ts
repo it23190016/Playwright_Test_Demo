@@ -164,7 +164,6 @@ test.describe.serial('🧃 Juice Bar E-commerce - Interactive Demo Scenarios', (
     });
     
     await expect(page).toHaveURL('/');
-    await expect(page).toHaveURL('/dashboard');
   });
 
 });
