@@ -17,7 +17,12 @@ jobs:
       with:
         node-version: lts/*
         
-    - name: Install dependencies
+    - name: Install Frontend dependencies
+      run: |
+        cd Frontend
+        npm ci
+        
+    - name: Install Test dependencies
       run: |
         cd tests
         npm ci
@@ -26,6 +31,13 @@ jobs:
       run: |
         cd tests
         npx playwright install --with-deps
+        
+    - name: Start Frontend App
+      run: |
+        cd Frontend
+        npm run build
+        npm start &
+        sleep 10
         
     - name: Run Playwright tests
       run: |
