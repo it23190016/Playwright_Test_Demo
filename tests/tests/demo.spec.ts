@@ -123,16 +123,16 @@ test.describe.serial('🧃 Juice Bar E-commerce - Interactive Demo Scenarios', (
 
   });
 
-  test('❌ Invalid Login Attempt', async ({ page }) => {
-    await page.goto('/');
-    await page.fill('input[type="email"]', 'wrong@email.com');
-    await page.fill('input[type="password"]', 'wrongpassword');
-    await page.click('button[type="submit"]');
+  // test('❌ Invalid Login Attempt', async ({ page }) => {
+  //   await page.goto('/');
+  //   await page.fill('input[type="email"]', 'wrong@email.com');
+  //   await page.fill('input[type="password"]', 'wrongpassword');
+  //   await page.click('button[type="submit"]');
     
-    await page.waitForTimeout(2000);
+  //   await page.waitForTimeout(2000);
     
-    // This test is designed to fail - expecting wrong behavior
-    await expect(page).toHaveURL('/dashboard');
-  });
+  //   // This test is designed to fail - expecting wrong behavior
+  //   await expect(page).toHaveURL('/dashboard');
+  // });
 
 });
