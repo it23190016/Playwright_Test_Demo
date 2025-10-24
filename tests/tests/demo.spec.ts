@@ -131,9 +131,7 @@ test.describe.serial('🧃 Juice Bar E-commerce - Interactive Demo Scenarios', (
     
     await page.waitForTimeout(2000);
     
-
-    
-    // This should fail - invalid credentials should NOT redirect to dashboard
+    // This test is designed to fail - expecting wrong behavior
     await expect(page).toHaveURL('/dashboard');
   });
 
