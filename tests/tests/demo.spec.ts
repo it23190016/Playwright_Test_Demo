@@ -23,13 +23,7 @@ test.describe.serial('🧃 Juice Bar E-commerce - Interactive Demo Scenarios', (
       await expect(page.locator('text=Green Detox').first()).toBeVisible();
     }
     
-    await test.step('Customer Shopping Complete', async () => {
-      const screenshot = await page.screenshot({ fullPage: true });
-      await test.info().attach('Customer Shopping Result', {
-        body: screenshot,
-        contentType: 'image/png'
-      });
-    });
+
   });
 
   test('✅ Admin Login, View Products, Scroll, and Logout', async ({ page }) => {
@@ -44,13 +38,7 @@ test.describe.serial('🧃 Juice Bar E-commerce - Interactive Demo Scenarios', (
     await page.locator('button:has-text("Edit")').first().click();
     await page.waitForTimeout(1000);
     
-    await test.step('Admin Product Management', async () => {
-      const screenshot = await page.screenshot({ fullPage: true });
-      await test.info().attach('Admin Management Interface', {
-        body: screenshot,
-        contentType: 'image/png'
-      });
-    });
+
     
     const cancelButton = page.locator('button:has-text("Cancel"), button:has-text("Close"), button:has-text("Back")');
     if (await cancelButton.count() > 0) {
@@ -102,13 +90,7 @@ test.describe.serial('🧃 Juice Bar E-commerce - Interactive Demo Scenarios', (
     await expect(page.locator('h1')).toBeVisible();
     await expect(page.locator('button:has-text("Edit")')).toHaveCount(6);
     
-    await test.step('Admin Product Creation Complete', async () => {
-      const screenshot = await page.screenshot({ fullPage: true });
-      await test.info().attach('Admin Product Creation Result', {
-        body: screenshot,
-        contentType: 'image/png'
-      });
-    });
+
   });
 
   test('✅ Customer Browsing Multiple Juices', async ({ page }) => {
@@ -138,13 +120,7 @@ test.describe.serial('🧃 Juice Bar E-commerce - Interactive Demo Scenarios', (
       await expect(page.locator('text=LKR').first()).toBeVisible();
     }
     
-    await test.step('Multiple Juice Selection Complete', async () => {
-      const screenshot = await page.screenshot({ fullPage: true });
-      await test.info().attach('Multiple Juice Selection Result', {
-        body: screenshot,
-        contentType: 'image/png'
-      });
-    });
+
   });
 
   test('❌ Invalid Login Attempt', async ({ page }) => {
@@ -155,15 +131,10 @@ test.describe.serial('🧃 Juice Bar E-commerce - Interactive Demo Scenarios', (
     
     await page.waitForTimeout(2000);
     
-    await test.step('Invalid Login Error Notification', async () => {
-      const screenshot = await page.screenshot({ fullPage: true });
-      await test.info().attach('Invalid Login Error with Notification', {
-        body: screenshot,
-        contentType: 'image/png'
-      });
-    });
+
     
-    await expect(page).toHaveURL('/');
+    // This should fail - invalid credentials should NOT redirect to dashboard
+    await expect(page).toHaveURL('/dashboard');
   });
 
 });
