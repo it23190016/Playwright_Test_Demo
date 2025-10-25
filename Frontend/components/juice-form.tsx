@@ -38,6 +38,7 @@ export function JuiceForm({ juice, onSubmit, onCancel }: JuiceFormProps) {
         <label className="block text-sm font-medium mb-1">Juice Name</label>
         <input
           type="text"
+          name="name"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
@@ -49,6 +50,7 @@ export function JuiceForm({ juice, onSubmit, onCancel }: JuiceFormProps) {
         <label className="block text-sm font-medium mb-1">Price ($)</label>
         <input
           type="number"
+          name="price"
           step="0.01"
           value={formData.price}
           onChange={(e) => setFormData({ ...formData, price: Number.parseFloat(e.target.value) })}
@@ -60,6 +62,7 @@ export function JuiceForm({ juice, onSubmit, onCancel }: JuiceFormProps) {
       <div>
         <label className="block text-sm font-medium mb-1">Description</label>
         <textarea
+          name="description"
           value={formData.description}
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
@@ -69,10 +72,10 @@ export function JuiceForm({ juice, onSubmit, onCancel }: JuiceFormProps) {
       </div>
 
       <div className="flex gap-2">
-        <Button type="submit" className="flex-1 bg-primary hover:bg-primary/90">
+        <Button type="submit" className="flex-1 bg-primary hover:bg-primary/90" name="submit-juice">
           {juice ? "Update Juice" : "Add Juice"}
         </Button>
-        <Button type="button" onClick={onCancel} variant="outline" className="flex-1 bg-transparent">
+        <Button type="button" onClick={onCancel} variant="outline" className="flex-1 bg-transparent" name="cancel-juice">
           Cancel
         </Button>
       </div>

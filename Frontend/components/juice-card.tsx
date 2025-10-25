@@ -45,10 +45,10 @@ export function JuiceCard({ juice, onEdit, onDelete, isAdmin }: JuiceCardProps) 
             )}
             {isAdmin && (
               <>
-                <Button onClick={() => onEdit?.(juice)} variant="outline" className="flex-1">
+                <Button onClick={() => onEdit?.(juice)} variant="outline" className="flex-1" name="edit-product">
                   Edit
                 </Button>
-                <Button onClick={() => onDelete?.(juice.id)} variant="destructive" className="flex-1">
+                <Button onClick={() => onDelete?.(juice.id)} variant="destructive" className="flex-1" name="delete-product">
                   Delete
                 </Button>
               </>

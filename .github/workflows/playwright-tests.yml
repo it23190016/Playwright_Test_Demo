@@ -2,7 +2,7 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, dev ]
   pull_request:
     branches: [ main ]
 
@@ -14,10 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    
+      
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+        cache: 'npm'
+        cache-dependency-path: |
+          Frontend/package-lock.json
+          tests/package-lock.json
+
         
     - name: Install Frontend dependencies
       run: |
@@ -39,7 +44,7 @@ jobs:
         cd Frontend
         npm run build
         npm start &
-        sleep 10
+        npx wait-on http://localhost:3000
         
     - name: Run Playwright tests
       run: |
@@ -73,4 +78,15 @@ jobs:
         name: allure-report
         path: tests/allure-report/
         retention-days: 30
+        
+    - name: Deploy Allure Report to GitHub Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: tests/allure-report
+        force_orphan: true
+
+
         

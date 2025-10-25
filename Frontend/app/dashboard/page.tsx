@@ -73,6 +73,7 @@ export default function DashboardPage() {
                 setShowForm(!showForm)
               }}
               className="bg-primary hover:bg-primary/90"
+              name="add-new-juice"
             >
               {showForm ? "Cancel" : "+ Add New Juice"}
             </Button>
